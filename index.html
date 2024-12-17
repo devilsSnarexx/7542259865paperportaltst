@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+</head>
+<body>
+
+
+
+    <!-- TRANSITION -->
+     <div class="transitionExM">
+        <span>Lorem</span>
+     </div>
+
+    <!-- EXAM CONDITIONS POP UP CONFIRMATION -->
+    <div class="exc-modal not_showing">
+        <div class="exc-card">
+            <div class="exc-header">
+              <div class="exc-image"><svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg></div>
+              <div class="exc-content">
+                 <span class="exc-title">Enter Exam Mode</span>
+                 <p class="exc-message">Exam Mode means full-on test vibes—no hints, no help, just you, the timer, and the question paper. The clock won't stop or pause for anything, so think twice before starting! Close the window? Boom, it's like walking out of the exam hall—no marks for that session!</p>
+              </div>
+               <div class="exc-actions">
+                 <div class="exc-desactivate start-exammode" type="button">Got It, Let's Go!</div>
+                 <div class="exc-cancel end-exammode" type="button">Take Me Back</div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    <!-- EXAM MODE EXIT CONFIRMATION -->
+    <div class="exc-modalExit not_showing">
+        <div class="exc-card">
+            <div class="exc-header">
+              <div class="exc-image"><svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg></div>
+              <div class="exc-content">
+                 <span class="exc-title">Exit Exam Mode?</span>
+                 <p class="exc-message">No marks will be awarded and you will lose all your progress for this paper!</p>
+              </div>
+               <div class="exc-actions">
+                 <div class="exc-desactivateExit exit-exammode-true" type="button">Yes, I Can't Handle This &#x1f62d;</div>
+                 <div class="exc-cancelExit exit-exammode-false" type="button">Take Me Back</div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    <!-- EXAM MODE TURNIN CARD -->
+    <div class="modalTurnIn exc-modalTurnIn not_showing" id="examModeTurnInConfCard">
+        <div class="exc-card">
+            <div class="exc-header">
+              <div class="exc-image"><svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                    </svg></div>
+              <div class="exc-content">
+                 <span class="exc-title">Turn In Your Exam</span>
+                 <p class="exc-message">Let's go! You rock - you may now mark your exam and input your marks below!</p>
+              </div>
+               <div class="exc-actions">
+                 <div class="exc-desactivateExit69 submitmarks-exammode-true">
+                    <div class="marksInputExmContainer">
+                        <div class="markInputExM">
+                            <div class="input-container">
+                                <input id="marksInput" required placeholder="Marks" type="text">
+                                <span id="maxMarks" class="max-label"><span class="marks__slash">/</span> 56</span>
+                                <button class="invite-btn exam-modeSubmit" type="button" id="submitBtn">Submit</button>               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="openMSExM">
+                        Open Mark Scheme
+                    </div>
+                 </div>
+                 <div class="exc-cancelExit submitmarks-exammode-false" type="button">Take Me Back</div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MARK SCHEME -->
+    <div class="viewer__mark-scheme close">
+        <div class="mark-schemeDoc">
+            <div id="adobe-dc-view-marking_scheme"></div>
+        </div>
+    </div>
+
+    <section class="home-section">
+        <div class="home-content">
+            <div class="msButtonToClose not_showing">
+                <i class="ri-close-line"></i> Close Marking Scheme
+            </div>
+        </div>
+    
+    <!-- QUESTION PAPER -->
+        <div class="pastPaper full-widthExt">
+            <div id="adobe-dc-view-question_paper"></div>
+        </div>
+    </section>
+
+    <!-- TASKBAR -->
+     <div class="viewer__taskbar hiddenTaskbar">
+        <div class="logo__container-task">
+            <img src="./assets/img/logo_white.png" alt="" id="logo_task">
+        </div>
+        <div class="timer__container-task">
+            <div class="buttons">
+                <div id="startPauseBtnTask" class="one-button"><i class='bx bx-play'></i></div>
+                <div id="resetBtnTask" class="one-button"><i class='bx bx-stop' ></i></div>
+            </div>
+            <div class="timerTask">
+                <div id="timerTask">01:30:00</div>
+            </div>
+        </div>
+        <div class="exammode-btns">
+            <div>
+                <div class="animated-button1">
+                    <span><i class='bx bxs-check-square'></i> Turn In</span>
+                    <span></span>
+                </div>
+            </div>
+            <div>
+                <div class="animated-button2">
+                    <span><i class='bx bxs-exit' ></i> Exit Exam</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+
+    <div class="viewer__sidebar">
+        <div class="logo-details">
+            <span class="logo_name">
+                <img src="./assets/img/logo_white.png" alt="image" class="logo-image">
+            </span>
+        </div>
+
+        <div class="timerSide">
+            <div id="timer">01:30:00</div>
+            <div class="buttons">
+                <button id="startPauseBtn">Start</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+
+        <div class="marks__input">
+            <div class="input-container">
+                <input id="marksInput" required placeholder="Marks" type="text">
+                <span id="maxMarks" class="max-label"><span class="marks__slash">/</span> 56</span>
+                <button class="invite-btn" type="button" id="submitBtn">Submit</button>               
+            </div>
+            <div class="threshold__link">
+                <a href="#">Grade Boundaries</a>
+            </div>
+            <div id="errorMsg" class="error-msg"></div>
+        </div>
+        
+        <div class="tools__buttons">
+            <div class="button exam_mode" data-tooltip="Authentic Exam Conditions">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                ></path>
+              </svg>
+              <span>Enter Exam Mode</span>
+            </div>
+
+            <div class="button ms__button">
+                <p><i class='bx bx-file'></i> Open Marking Scheme</p>
+            </div>
+            <div class="button vid__button">
+                <p><i class='bx bxl-youtube' ></i> Video Solutions</p>
+            </div>
+            <div class="button">
+                <p><i class='bx bx-bot'></i> Get Help with AI</p>
+            </div>
+            <div class="button">
+                <p><i class='bx bxs-user-voice'></i> Ask From a Human
+        </div>
+        
+    </div>
+
+    <!-- Video Solutions -->
+    <div class="video__sidebar hiddenVideo">
+        <div class="logo-details">
+            <span class="logo_name">Video Solutions</span>
+        </div>
+
+        <div class="video_containers">
+            <div class="video_item">
+                <div class="video_title">
+                    <h1>Question 1-6</h1>
+                </div>
+                <div class="video_content">
+                    <iframe width="240px" src="https://www.youtube-nocookie.com/embed/JPOxp9VFYTg?si=nlr0MrpSYJ8jtYpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video_item">
+                <div class="video_title">
+                    <h1>Question 6-12</h1>
+                </div>
+                <div class="video_content">
+                    <iframe width="240px" src="https://www.youtube-nocookie.com/embed/JPOxp9VFYTg?si=nlr0MrpSYJ8jtYpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video_item">
+                <div class="video_title">
+                    <h1>Question 12-24</h1>
+                </div>
+                <div class="video_content">
+                    <iframe width="240px" src="https://www.youtube-nocookie.com/embed/JPOxp9VFYTg?si=nlr0MrpSYJ8jtYpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video_item">
+                <div class="video_title">
+                    <h1>Question 24-36</h1>
+                </div>
+                <div class="video_content">
+                    <iframe width="240px" src="https://www.youtube-nocookie.com/embed/JPOxp9VFYTg?si=nlr0MrpSYJ8jtYpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="video_item">
+                <div class="video_title">
+                    <h1>Question 36-40</h1>
+                </div>
+                <div class="video_content">
+                    <iframe width="240px" src="https://www.youtube-nocookie.com/embed/JPOxp9VFYTg?si=nlr0MrpSYJ8jtYpy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="vid__close not_showing">
+            <i class="ri-close-line""></i>
+        </div>
+        
+    </div>
+</body>
+
+<script src="./assets/js/script.js"></script>
+
+<!-- Marking Scheme -->
+<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+ <script type="text/javascript">
+    document.addEventListener("adobe_dc_view_sdk.ready", function()
+    {
+        var adobeDCView = new AdobeDC.View({clientId: "763dff0504f54f7a85179bcea5af0a33", divId: "adobe-dc-view-marking_scheme"});
+        adobeDCView.previewFile(
+       {
+          content:   {location: {url: "http://localhost/papers/assets/docs/0580_w16_ms_11.pdf"}},
+          metaData: {fileName: "Mark Scheme"}
+       });
+    });
+</script>
+
+<!-- Question Paper -->
+<script type="text/javascript">
+   document.addEventListener("adobe_dc_view_sdk.ready", function()
+   {
+       var adobeDCView = new AdobeDC.View({clientId: "763dff0504f54f7a85179bcea5af0a33", divId: "adobe-dc-view-question_paper"});
+       adobeDCView.previewFile(
+      {
+         content:   {location: {url: "http://localhost/papers/assets/docs/0580_w16_qp_11.pdf"}},
+         metaData: {fileName: "Question Paper"}
+      });
+   });
+</script>
+
+</html>
